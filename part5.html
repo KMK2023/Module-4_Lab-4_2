@@ -1,0 +1,174 @@
+<!-- Exercise 5: Lab – Manage Data 1 (Page 57)
+ 
+Example of how labs 1 & 2 come together -
+Frames in order:
+1.	When you first open the page
+2.	When you add content (newsItem to your news array)
+3.	Interval function kicks in and displays new data
+In this lab you will show your understanding of using very simple templates.
+We are syncing what is on the screen with what is in the data. In the future we will make it much more complex, but for now, we are really just after the concepts. 
+
+
+Part 1 - Use the following array to populate a web page which contains news. When the page loads up, it will display the news in the array. 
+Use an interval function to read the array every 5 seconds. Every time the array is read, remove all news elements from the news container and fill it in with the latest news – so it is always in sync. 
+
+let news=[
+    { id: 1, title: 'News1', content:"bla"},
+    { id: 2, title: 'News2', content:"ble"},
+    { id: 3, title: 'News3', content:"blu"}
+]; 
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <html lang="ta" xmlns="http://www.w3.org/1999/xhtml">
+    <template id="news-template">
+      <div class="card col-4">
+        <div class="card-body">
+         
+          <h5 class="card-title">News title</h5>
+          <p class="card-text">News body</p>
+          <img class="card-image" src="" alt="" width="100px" height="100px">
+        </div>
+      </div>
+    </template>
+
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+      />
+      <title>
+        Tamil News | Latest Tamil News | News in Tamil | தமிழ் செய்திகள் |
+        தமிழ்நாடு செய்திகள் | புதிய செய்திகள் - Dinamalar
+    
+      </title>
+    </head>
+
+    <body>
+        <div id="dmr-navbars">
+            <div class="indbox"><ul><li><h3 id="dmrhome"><a title="Dinamalar" href="//www.dinamalar.com/">DINAMALAR</a></h3> </li><li id="cico"><li id="tico"><a title="Temple" href="https://temple.dinamalar.com/" target="_blank"><p>கோயில்கள்</p></a></li><li id="sico"><a title="Sports" href="https://sports.dinamalar.com/" target="_blank"><p>விளையாட்டு</p></a></li><li id="nico"><a title="NRI" href="https://www.dinamalar.com/nri/index.asp" target="_blank"><p>என்.ஆர்.ஐ</p></a></li><li id="kmico"><a title="Kalvimalar" href="https://kalvimalar.dinamalar.com/home.asp" target="_blank"><p>கல்விமலர்</p></a></li><li id="bkico"><a title="Books" href="https://books.dinamalar.com/" target="_blank"><p>புத்தகங்கள் </p></a></li>
+            <li id="selkanavu"><a title="kanavu illam" href="https://www.dinamalar.com/kanavu-illam/" target="_blank"><p>கனவு இல்லம்</p></a></li>
+            <!--<li id="ekico" style="margin-left:2px; margin-top:2px;"><a title="iPaper" href="https://ipaper.dinamalar.com/" target="_blank"><p style="background: url(//stat.dinamalar.com/new/2021/images/ipaper_icon_dmr.png) no-repeat left 0px; padding-left: 20px; margin: 0 2px; font-size: 13px !important; font-weight:normal;">iPaper</p></a></li>--></ul></div>
+            <div id="dmrsshare"  style="float:right; margin-top:0px; margin-right:5px; padding:0px;"><ul>
+            <li id="ekico" style="margin-left:2px; margin-top:2px;"><a style=" padding:3px 6px !important; margin:0px;" title="iPaper" href="https://ipaper.dinamalar.com/" target="_blank"><p style="background: url(//stat.dinamalar.com/new/2021/images/ipaper_icon_dmr.png) no-repeat left 0px; padding-left: 20px; margin: 0 2px; font-size: 13px !important; font-weight:normal;">iPaper</p></a></li><li id="psubico" style="margin-left:5px; margin-top:2px; "> <a style="color:#fff !important; padding:3px 6px !important;" class="clsprint" href="https://www.dinamalar.com/Print-online-subscription/"> <p> Subscription </p> </a></li>
+            </ul></div>
+            <!--include file="common_loginV5.asp"--> 
+            <div style="clear:both;height:1px;overflow:hidden;"></div></div><div class="commonboth"></div>
+
+            <h2> Credit to Dinamalar for the links and images....................... This is only for learning purposes </h2>
+
+            <div style="margin-top:6px;">
+            <div style="float:left;">
+
+
+             
+
+            <div style="float:left;"><a href="//www.dinamalar.com/index.asp" title="Dinamalar - No 1 Tamil News Paper">
+            
+            <img src="//stat.dinamalar.com/new/images/dmrenglishlogonew.png" alt="Dinamalar - No 1 Tamil News Paper" width="190" border="0"/> 
+            
+            </a></div>
+            
+            <br/>
+            <div class="topflttvr" style="width:45px;"><a href="http://www.dinamalar.com/kadal_thamarai/kadal.asp" target="_blank"><img width="45" src="//stat.dinamalar.com/new/2012/images/tvrhomeimg.jpg" alt="TVR" border="0"></a></div>
+            <div class="commonboth"></div>
+            <div style="text-align:center;">
+            
+            <span>ஞாயிறு, டிசம்பர் 3, 2023, <br />கார்த்திகை 17, சோபகிருது வருடம்  </span>
+            
+            </div>
+
+        <!-- ---------------------------- -->
+      <div class="container p-3">
+        <h2>முன்னிலைபிளாஷ்...</h2>
+        <div id="news-list" class="row g-3 p-3"></div>
+
+        <!-- part 2 extension - stop interval button -->
+        <div><button onclick="stopInterval()">Stop Reloading</button></div>
+
+        <!-- part 2: form to create new news item -->
+        <form onsubmit="createNewsItem(event)">
+          <label>News Item Title: <input name="title" id="newsTitle" /></label
+          ><br />
+          <label
+            >News Item Content: <input name="content" id="newsContent"
+          /></label>
+          <br/>
+          <label
+          >News Item url: <input name="Picture" id="newsPicture"></label><button type="button" onclick="upload">UploadButton</button>
+          <br/>
+          <button type="button" onclick="addNewsItem()">Add News Item</button>
+          
+
+        </form>
+      </div>
+
+      <script>
+        let news = [
+          {
+            id: 1,
+            title: "Election Results",
+            content: "Newly elected minister...",
+            image: "Election.png",
+          },
+          {
+            id: 2,
+            title: "நலனுக்காக அயராது உழைப்போம்...",
+            content: "World Cup winners...",
+            image: "cup.png",
+          },
+          {
+            id: 3,
+            title: "சென்னை அருகே 100 கி.மீ., வரை நெருங்கும் புயல்",
+            content: ": வானிலை மையம் எச்சரிக்கை....",
+            image: "news1.png",
+          },
+        ];
+
+        function getNews() {
+          // clear out previous news items
+          document.getElementById("news-list").innerText = "";
+
+          news.forEach((item) => addNewsItem(item));
+        }
+
+        // clone, then populate, then append a new template
+        function addNewsItem(news) {
+          const template = document
+            .getElementById("news-template")
+            .content.cloneNode(true);
+          template.querySelector(".card-title").innerText = news.title;
+          template.querySelector(".card-text").innerText = news.content;
+          template.querySelector(".card-image").src = news.image;
+          template.querySelector(".card-image").alt = news.title;
+          document.querySelector("#news-list").appendChild(template);
+        }
+
+        // load news initially
+        getNews();
+
+        // reload news every 5 seconds
+        let newsTimer = setInterval(getNews, 5000);
+
+        // part 2: add news item
+        function createNewsItem(event) {
+          event.preventDefault();
+          let newTitle = document.getElementById("newsTitle").value;
+          let newContent = document.getElementById("newsContent").value;
+          news.push({
+            title: newTitle,
+            content: newContent,
+            id: news.length + 1,
+          });
+        }
+
+        function stopInterval() {
+          clearInterval(newsTimer);
+        }
+      </script>
+    </body>
+  </html>
+</html>

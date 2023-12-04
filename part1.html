@@ -1,0 +1,71 @@
+<!-- Exercise 2: Lab – Template (Page 35)
+Make sure you do all three parts!
+1.	Ensure the function can have content passed to the card dynamically.
+2.	Modify the code so the cards are automatically generated based on data from an array. This ensures that you can make as many cards as needed to display all the data in the array. Use the provided code on the right hand side. 
+(const data = [{name: ‘bob’, age: 23}, {name: ‘alice’, age: 39}]
+
+
+For exercise 2 use the following array :
+
+const data = [{name: 'bob', age: 23}, {name: 'alice', age: 39}] -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Part1</title>
+
+    <style>
+      body {
+        background-color: blanchedalmond;
+      }
+      .card {
+        padding: 10px;
+        margin: 10px;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+        margin: 5px;
+      }
+      .card-description {
+        font-weight: 400;
+        font-size: 2em;
+        padding: 0 0 10px 0;
+        margin: 5px;
+      }
+    </style>
+
+
+  </head>
+  <body>
+    <h1>Part 1</h1>
+    <template id="card-template">
+    <div class="card">
+        <div class="card-body"> 
+            <div class="card-title"></div>
+            <div class="card-description"></div>
+        </div>
+    </template>
+    <div id="card-list"></div>
+
+
+    <script>
+        function addCard() {
+            const template = document.getElementById("card-template").content.cloneNode(true);
+            template.querySelector('.card-title').innerText = 'My Card Title';
+            template.querySelector('.card-description').innerText = "This is where the actual text gets input";
+            document.querySelector('#card-list').appendChild(template);
+        }
+    
+        if ('content' in document.createElement('template')) {
+            addCard();
+        }
+    </script>
+
+    
+  </body>
+
+</html>

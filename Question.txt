@@ -1,0 +1,213 @@
+/*
+
+Module 4 Exercises
+ 
+Exercise 1: Lab – Figma (Page 28. Of Module 4 content pdf)
+ No right or wrong specifically, follow the design procedure:
+·        Requirements
+·        Sketch
+·        Lo-Fi
+·        Hi-Fi
+Make the figma link public and viewable and just create a file that has a link to it in your labs repository.
+Create a Figma prototype for a social media application, where you can post your content and posts from other users are visible. Don’t just jump into Figma, try to follow the design procedure. 
+Also, this is going to be part of your portfolio, try to do some research and come up with a personal design. For example, it could be a social media application dedicated to the Warhammer Community, or the Ferrari Lovers. 
+
+
+Exercise 2: Lab – Template (Page 35)
+Make sure you do all three parts!
+1.	Ensure the function can have content passed to the card dynamically.
+2.	Modify the code so the cards are automatically generated based on data from an array. This ensures that you can make as many cards as needed to display all the data in the array. Use the provided code on the right hand side. 
+(const data = [{name: ‘bob’, age: 23}, {name: ‘alice’, age: 39}]
+
+
+For exercise 2 use the following array :
+
+const data = [{name: 'bob', age: 23}, {name: 'alice', age: 39}]
+
+
+3.	Generate multiple templates and populate your web page dynamically, use the provided code on the slide of Van Gogh and his portfolio. 
+
+For exercise 3 use the following:
+const artist={
+name:"Van Gogh",
+portfolio:[
+{title:"portrait",
+url:"https://collectionapi.metmuseum.org/api/collecti
+on/v1/iiif/436532/1671316/main-image"},
+
+{title:"sky",
+
+url:"https://mymodernmet.com/wp/wp-
+content/uploads/2020/11/White-house-night-van-goh-
+worldwide-2.jpg"},
+
+]
+}
+
+Exercise 3: Lab – Calculator (Page 38)
+As Jo mentioned, don’t worry about getting the perfect scientific calculator working – try and follow the design process and follow the instructions on the slide. The base of the application is an app that takes 2 numbers that can do 4 operations (+, /, *, -). Pressing the ‘equals’ button will display the result. Pressing the ‘reset’ button will clear the display.
+Try not to use the eval() function – you will see on the MDN there are big security issues therefore we don’t use it, and implementing eval isn’t going to yield you results in terms of your learning.
+If in your research and tackling this project you come across anonymous functions – don’t utilize this to do the leg work of your calculation for you. There are similar security issues and you don’t want to ‘cheat’ and let something do the logical parts of your application for you.
+Ensure you do the following:
+- Create a repository
+- Clone the repository locally
+- Create a branch for each feature
+
+
+1) What are the key requirements ? For example, an e-shop
+requires that you have stock, a buy button, or a cart
+management system. List them all and describe the main parts.
+2) Sketch the application on paper, trying to understand how
+everything communicates, what causes something else to
+trigger. For example, buying a product needs to automatically
+update the stock list, or if you have a login, you should have
+signup.
+3) Define the data, everything spins around data. Define your data
+models and find any edge cases.
+4) Use any tool you prefer to create a prototype, and present it to
+someone who is not you to test, testing your own designs is a
+“terrible” practice.
+5) Find ideas and define a color scheme
+6) Create the HI-FI designs.
+
+
+1) List the requirements, in this case you have a total of 4
+requirements
+a) Get data
+b) Choose an operator
+c) Get the result
+d) Reset the screen
+2) Sketch the application, so that you are sure about the correct
+functioning.
+3) You may use a flow diagram to help.
+4) Use a tool of your choice, like Figma, to design the application.
+5) Use the prototype ability and test it.
+Develop the application . Start from GIT ,it is good practice to do things
+in a standard way.
+- Create a repository
+- Clone the repository locally
+- Create a branch for each feature
+
+Exercise 4: Lab – Display Cards Bootstrap (Page 52)
+Utilize bootstrap elements to make a responsive design
+Optional Ext: Try and use what you’ve learnt on page 34 and use templates/javascript to populate your web page with your cards. 
+
+Using only bootstrap elements, create this web application, making it responsive, 4 cards when large, 2 when medium, and 1 when small.
+ 
+
+Exercise 5: Lab – Manage Data 1 (Page 57)
+ 
+Example of how labs 1 & 2 come together -
+Frames in order:
+1.	When you first open the page
+2.	When you add content (newsItem to your news array)
+3.	Interval function kicks in and displays new data
+In this lab you will show your understanding of using very simple templates.
+We are syncing what is on the screen with what is in the data. In the future we will make it much more complex, but for now, we are really just after the concepts. 
+
+
+Part 1 - Use the following array to populate a web page which contains news. When the page loads up, it will display the news in the array. 
+Use an interval function to read the array every 5 seconds. Every time the array is read, remove all news elements from the news container and fill it in with the latest news – so it is always in sync. 
+
+let news=[
+    { id: 1, title: 'News1', content:"bla"},
+    { id: 2, title: 'News2', content:"ble"},
+    { id: 3, title: 'News3', content:"blu"}
+]; 
+
+
+
+
+Exercise 6: Lab – Manage Data 2 (Page 58)
+
+This time you will need to add news to the previous array. So when the interval function come through, it will add your latest post. 
+
+
+To update the array, create a form somewhere in your page, you will pass the title of the news and the content. 
+There is a trick here, if you use a form and submit, it will trigger a page reload. There are two ways of solving this. 
+1) You can research the prevent default behavior, which stops the form from doing a normal post. 
+Some prevent default behaviour links: 
+W3Schools 
+Mozilla MDN Web Docs 
+1) You can simply recreate the form without using an actual html form. Use Text areas and normal buttons instead. 
+
+
+
+Exercise 7: Lab – Fetch Data (Page 67)
+Part 1) Make use of the fetch API to retrieve data online and display it. Set the limit default to 10. When the page loads up, it will use the default value.
+
+
+Create a web page that will read the posts from JSONPlaceholder. Similarly to the previous lab, arrange them on the web page. 
+
+Part 1) Make use of the fetch API to retrieve data online and display it. Set the limit default to 10. When the page loads up, it will use the default value. 
+Part 1) Make use of the fe tch API to retrieve data online and display it. Set the limit default to 10. When the page loads up, it will use the default value. 
+
+
+
+Exercise 8: Lab – CSS Animation (Page 74)
+Make a square slider so that it slides from the top to the bottom and returns to its original position, changing background colour in the process. 
+ 
+
+Exercise 9: Moment.js Dates (Page 86)
+For question 2 (years, months & days between birthdate and current date), don’t fret too much if you don’t get a hyper accurate representation. 
+
+Using the Moment.js library, try to solve the below problems: 
+1.	Calculate the number of days between your birthdate and the current date 
+2.	Display the number of years, months, and days between your birthdate and current date
+Example: 24 years, 8 months, and 26 days 
+
+1.	Given two dates, display the date closest to the current date 
+2.	Given two dates, display whether the first date is before or after the second date 
+3.	Display the current time in London 
+
+Exercise 10: Apache E-Charts Lab (Page 92)
+Adapt the code on the right to make a chart that shows how many items are listed under each category on fake store API 
+•	Get data from FakeStoreApi (Fetch or Axios the data) 
+•	Have an eChart bar for each category
+•	Show how many items are listed under each category 
+DOCTYPE html> <html lang="en"> <head> 
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Document</title> 
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script> </head> 
+<body>
+<!-- Prepare a DOM with a defined width and height for ECharts --> 
+<div id="main" style="width: 900px;height:600px;"></div> <script type="text/javascript"> 
+// get json placeholder data 
+fetch('https://fakestoreapi.com/products') .then((response) => response.json()) .then((json) => { 
+console.log(json) }) 
+.then(()=>{
+// Display the chart 
+myChart.setOption(option); }) 
+// Initialise the echarts instance based on the prepared dom 
+var myChart = echarts.init(document.getElementById('main')); 
+// Specify the configuration items and data for the chart 
+var option = { title: { 
+text: 'Heading goes here' }, 
+xAxis: {
+data: ['Category 1','Category 2','Category 3','Category 4'] 
+},
+yAxis: {}, series: [ 
+{ 
+} ] 
+}; 
+
+
+Exercise 11: E-Commerce page (Page 93)
+
+- 
+Create a fake ECommerce website with the data from Fake Store API 
+-  Fetch or Axios the API data 
+-  Create Bootstrap cards to display the items including the image, title, price, item description 
+-  Create drop down selection to choose individual product categories 
+-  (Optional extra 1) Create a search for item feature 
+-  (Optional extra 2) Add custom icons to each card (To show item category) 
+-  (Optional extra 3) Create EChart on separate page to display average item price from each 
+category 
+//
+*/
+ 
+ 
+
+
+

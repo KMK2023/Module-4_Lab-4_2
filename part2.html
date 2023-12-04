@@ -1,0 +1,90 @@
+<!-- 3. Generate multiple templates and populate your web page dynamically, use the
+provided code on the slide of Van Gogh and his portfolio. For exercise 3 use the
+following: const artist={ name:"Van Gogh", portfolio:[ {title:"portrait",
+url:"https://collectionapi.metmuseum.org/api/collecti
+on/v1/iiif/436532/1671316/main-image"}, {title:"sky",
+url:"https://mymodernmet.com/wp/wp-
+content/uploads/2020/11/White-house-night-van-goh- worldwide-2.jpg"}, ] } -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Part1</title>
+
+    <style>
+      body {
+        background-color: blanchedalmond;
+      }
+      .card {
+        padding: 10px;
+        margin: 10px;
+        border: 2px solid rgb(254, 2, 2);
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+        margin: 5px;
+        border: 2px solid black; /* Corrected border property */
+      }
+      .card-description {
+        font-weight: 400;
+        font-size: 2em;
+        padding: 0 0 10px 0;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Part 1</h1>
+    <template id="card-template">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title"></div>
+          <div class="card-description"></div>
+        </div>
+      </div>
+    </template>
+    <div id="card-list"></div>
+
+    <script>
+      const data = [
+        {
+          name: "Amil",
+          age: 23,
+          ethnicity: "white",
+          Info: "working as an electrician",
+        },
+        {
+          name: "blaze",
+          age: 13,
+          ethnicity: "Asian",
+          Info: "working as a pilot",
+        },
+        {
+          name: "alice",
+          age: 39,
+          ethnicity: "Indian",
+          Info: "working as a paediatrician",
+        },
+      ];
+
+      function addCard(title, description, ethnicity, info) {
+        const template = document
+          .getElementById("card-template")
+          .content.cloneNode(true);
+        template.querySelector(".card-title").innerText = title;
+        template.querySelector(
+          ".card-description"
+        ).innerText = `Age: ${description}, Ethnicity: ${ethnicity}, Info: ${info}`;
+        document.querySelector("#card-list").appendChild(template);
+      }
+
+      data.forEach((data) =>
+        addCard(data.name, data.age, data.ethnicity, data.Info)
+      );
+    </script>
+  </body>
+</html>

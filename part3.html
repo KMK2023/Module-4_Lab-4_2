@@ -1,0 +1,185 @@
+<!-- For exercise 3 use the following:
+const artist={
+    name:"Van Gogh",
+    portfolio: [
+    { title: "portrait" ,
+    url:"https://collectionapi.metmuseum.org/api/collect
+    ion/v1/iiif/436532/1671316/main-image" },
+    { title: "sky" ,
+    url:"https://mymodernmet.com/wp/wp-content/uploads/2
+    020/11/White-house-night-van-goh-worldwide-2.jpg" },]} -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Module 4 Lab Exercise #2</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+        justify-content: center;
+      }
+
+      .card {
+        padding: 40px;
+        border: 10px solid black;
+      }
+
+      .card-title {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+        border: 3px solid purple;
+        justify-content: center;
+      }
+
+      .card-description {
+        font-weight: 600;
+        font-size: 10em;
+      }
+
+      .portfolio-items {
+        display: flex;
+        border: 1px solid purple;
+        justify-content: center;
+      }
+      .portfolio-item {
+        padding: 2em;
+        border: 1px solid purple;
+        justify-content: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!----------------------------------------------------------------------------------------------------------------------- -->
+    <template id="artist-template">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title"></div>
+          <div class="portfolio-items"></div>
+        </div>
+      </div>
+    </template>
+    <!----------------------------------------------------------------------------------------------------------------------- -->
+    <template id="portfolio-template">
+      <div class="portfolio-item">
+        <div class="portfolio-item-title"></div>
+        <img class="portfolio-item-image" width="300" />
+        <div class="portfolio-details"></div>
+        <div class="portfolio-story"></div>
+      </div>
+    </template>
+    <!----------------------------------------------------------------------------------------------------------------------- -->
+
+    <h1 style="text-align: center">
+      Module 4 - Part 3 - Card template- Artist
+    </h1>
+    <div id="card-list"></div>
+
+    <script>
+      // main exercise - single artist
+      const artist = {
+        name: "Van Gogh",
+        portfolio: [
+          {
+            title: "portrait",
+            url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image",
+            Location: "Paris, France",
+            Email: "vD8Jt@example.com",
+            Story:
+              "The best artist has no conception that a marble block does not itself contain within. - Michelangelo",
+          },
+          {
+            title: "sky",
+            url: "https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg",
+            Location: "Francis, France",
+            Email: "vD8ll@example.com",
+            Story:
+              "Art is the most intense mode of individualism that the world has known. - Oscar Wilde",
+          },
+        ],
+      };
+      // ---------------------------------------------------------------------------------------------------------------------
+      // Extension exercise - multiple artists
+      const artists = [
+        {
+          name: "Picasso",
+          portfolio: [
+            {
+              title: "Weeping Woman",
+              url: "https://upload.wikimedia.org/wikipedia/en/1/14/Picasso_The_Weeping_Woman_Tate_identifier_T05010_10.jpg",
+              Location: "Rome, Italy",
+              Email: "asD8Jt@example.com",
+              Story:
+                "Art enables us to find ourselves and lose ourselves at the same time. - Thomas Merton",
+            },
+            {
+              title: "Old Guitarist",
+              url: "https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/Old_guitarist_chicago.jpg/800px-Old_guitarist_chicago.jpg",
+              Location: "San Francisco, USA",
+              Email: "avv8Jt@example.com",
+              Story:
+                "The purpose of art is washing the dust of daily life off our souls. - Pablo Picasso",
+            },
+          ],
+        },
+        {
+          name: "Rembrandt",
+          portfolio: [
+            {
+              title: "Storm on the Sea of Galilee",
+              url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.jpg/800px-Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.jpg",
+              Location: "Leuven, Belgium",
+              Email: "asD8Jt@example.com",
+              Story:
+                "Art is not what you see, but what you make others see. - Edgar Degas",
+            },
+            {
+              title: "Abduction of Europa",
+              url: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Rembrandt_Harmensz._van_Rijn_-_The_Abduction_of_Europa_-_Google_Art_Project.jpg/1280px-Rembrandt_Harmensz._van_Rijn_-_The_Abduction_of_Europa_-_Google_Art_Project.jpg",
+              Location: "Amsterdam, Netherlands",
+              Email: "asD687t@example.com",
+              Story:
+                "Art should comfort the disturbed and disturb the comfortable. - Cesar A. Cruz",
+            },
+          ],
+        },
+      ];
+      // ---------------------------------------------------------------------------------------------------------------------
+      function addArtist(name, portfolio) {
+        // clone the template
+        const template = document
+          .getElementById("artist-template")
+          .content.cloneNode(true);
+
+        // populate the template
+        template.querySelector(".card-title").innerText = name;
+
+        portfolio.forEach((item) => {
+          const itemTemplate = document
+            .getElementById("portfolio-template")
+            .content.cloneNode(true);
+          itemTemplate.querySelector(".portfolio-item-title").innerText =
+            item.title;
+          itemTemplate.querySelector(".portfolio-item-image").src = item.url;
+          itemTemplate.querySelector(".portfolio-item-image").alt = item.title;
+          itemTemplate.querySelector(".portfolio-details").innerText =
+            item.Location + ` : ` + item.Email;
+
+          itemTemplate.querySelector(".portfolio-story").innerText = item.Story;
+          template.querySelector(".portfolio-items").appendChild(itemTemplate);
+        });
+
+        // include the populated template into the page
+        document.querySelector("#card-list").appendChild(template);
+      }
+
+      // main exercise - single artist
+      addArtist(artist.name, artist.portfolio);
+
+      // Extension exercise - multiple artists
+      artists.forEach((artist) => addArtist(artist.name, artist.portfolio));
+    </script>
+  </body>
+</html>
